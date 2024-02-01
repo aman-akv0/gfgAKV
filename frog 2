@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+int n;
+int solve(vector<int> &v, int i, int k){
+    if(i==n-1) return 0;
+    int ans=INT_MAX;
+    for(int j=1; j<=k; j++){
+        if(i+j<=n-1){
+            ans=min(ans, solve(v,i+j,k)+ abs(v[i]-v[i+j]));
+        }
+
+    }return ans;
+}
+int solving(vector<int> &v,int k){
+    n=v.size();
+    return solve(v,0,k);
+}
+int main(){
+    int n , k;
+    cin>>n>>k;
+    vector<int> v(n);
+    for(int i=0; i<n; i++){
+        cin >> v[i];
+    }
+    int res= solving(v,k);
+    cout<<res<<endl;
+    // return 0;
+
+
+}
